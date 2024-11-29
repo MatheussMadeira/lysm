@@ -12,6 +12,8 @@ import {
   TimeCounter,
   Linha,
   NavigationButton,
+  Buttonpage,
+  FadeContainer,
 } from "./Styles";
 
 import diaN from "./assets/diaN.jpg";
@@ -25,6 +27,7 @@ const startDate = new Date("2024-07-05T23:00:00");
 const images = [diaN, raro1, raro3, hj1];
 
 function App() {
+  const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeElapsed, setTimeElapsed] = useState({
     years: 0,
@@ -34,7 +37,9 @@ function App() {
     minutes: 0,
     seconds: 0,
   });
-
+  const handleButtonClick = () => {
+    setIsVisible(true);
+  };
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -99,109 +104,132 @@ function App() {
   }, []);
 
   return (
-    <Container>
-      <Header>
-        <TitlePrimary></TitlePrimary>
-      </Header>
-      <CSection>
+    <>
+      {!isVisible ? (
         <div
           style={{
             display: "flex",
             justifyContent: "center",
-            marginBottom: "20px",
+            alignItems: "center",
+            marginTop: "200px",
           }}
         >
-          <span style={{ fontSize: "25px" }}>💙</span>
+          <Buttonpage onClick={handleButtonClick}>Clique aqui!</Buttonpage>
         </div>
-        <Carrousel>
-          <div
-            style={{
-              display: "flex",
-              transition: "transform 0.5s ease-in-out",
-              width: `${images.length * 100}%`,
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
-          >
-            {images.map((image, index) => (
-              <Image key={index} src={image} alt={`Slide ${index + 1}`} />
-            ))}
-          </div>
-        </Carrousel>
-        {/* Botões de navegação */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "10px",
-          }}
-        >
-          <NavigationButton onClick={prevSlide}>←</NavigationButton>
-          <NavigationButton onClick={nextSlide}>→</NavigationButton>
-        </div>
-      </CSection>
-      <TSection>
-        <Fparagraph></Fparagraph>
-        <Lparagraph></Lparagraph>
-      </TSection>
-      <CDSection>
-        <h1
-          style={{
-            fontSize: "25px",
-            marginBottom: "10px",
-            marginLeft: "10px",
-            marginTop: "0px",
-          }}
-        >
-          Juntos há:
-        </h1>
-        <TimeCounter>
-          <div
-            style={{ textAlign: "center", color: "#b5b4b4", fontSize: "24px" }}
-          >
-            <div style={{ fontSize: "20px" }}>
-              <span style={{ fontWeight: "bold", color: "#FFFF" }}>
-                {timeElapsed.years}
-              </span>{" "}
-              anos,{" "}
-              <span style={{ fontWeight: "bold", color: "#FFFF" }}>
-                {timeElapsed.months}
-              </span>{" "}
-              meses,{" "}
-              <span style={{ fontWeight: "bold", color: "#FFFF" }}>
-                {timeElapsed.days}
-              </span>{" "}
-              dias{" "}
-            </div>
-            <div style={{ fontSize: "20px", marginTop: "10px" }}>
-              <span style={{ fontWeight: "bold", color: "#FFFF" }}>
-                {timeElapsed.hours}
-              </span>{" "}
-              horas{" "}
-              <span style={{ fontWeight: "bold", color: "#FFFF" }}>
-                {timeElapsed.minutes}
-              </span>{" "}
-              minutos e{" "}
-              <span style={{ fontWeight: "bold", color: "#FFFF" }}>
-                {timeElapsed.seconds}
-              </span>{" "}
-              segundos
-            </div>
-          </div>
-        </TimeCounter>
-      </CDSection>
-      <Linha />
-      <TSection>
-        <h1 style={{ fontSize: "25px", marginTop: "20px" }}>Oi princesa ❤️</h1>
-        <Lparagraph>
-          Só passando pra te dizer que eu te amo muito, e agradeço todos os dias
-          pelo nosso encontro
-        </Lparagraph>
-        <Linha />
-        <Lparagraph>
-          Espero passar todos os dias da minha vida ao seu lado
-        </Lparagraph>
-      </TSection>
-    </Container>
+      ) : (
+        <FadeContainer isVisible={isVisible}>
+          <Container>
+            <Header>
+              <TitlePrimary></TitlePrimary>
+            </Header>
+            <CSection>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginBottom: "20px",
+                }}
+              >
+                <span style={{ fontSize: "25px" }}>💙</span>
+              </div>
+              <Carrousel>
+                <div
+                  style={{
+                    display: "flex",
+                    transition: "transform 0.5s ease-in-out",
+                    width: `${images.length * 100}%`,
+                    transform: `translateX(-${currentIndex * 100}%)`,
+                  }}
+                >
+                  {images.map((image, index) => (
+                    <Image key={index} src={image} alt={`Slide ${index + 1}`} />
+                  ))}
+                </div>
+              </Carrousel>
+              {/* Botões de navegação */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "10px",
+                }}
+              >
+                <NavigationButton onClick={prevSlide}>←</NavigationButton>
+                <NavigationButton onClick={nextSlide}>→</NavigationButton>
+              </div>
+            </CSection>
+            <TSection>
+              <Fparagraph></Fparagraph>
+              <Lparagraph></Lparagraph>
+            </TSection>
+            <CDSection>
+              <h1
+                style={{
+                  fontSize: "25px",
+                  marginBottom: "10px",
+                  marginLeft: "10px",
+                  marginTop: "0px",
+                }}
+              >
+                Juntos há:
+              </h1>
+              <TimeCounter>
+                <div
+                  style={{
+                    textAlign: "center",
+                    color: "#b5b4b4",
+                    fontSize: "24px",
+                  }}
+                >
+                  <div style={{ fontSize: "20px" }}>
+                    <span style={{ fontWeight: "bold", color: "#FFFF" }}>
+                      {timeElapsed.years}
+                    </span>{" "}
+                    anos,{" "}
+                    <span style={{ fontWeight: "bold", color: "#FFFF" }}>
+                      {timeElapsed.months}
+                    </span>{" "}
+                    meses,{" "}
+                    <span style={{ fontWeight: "bold", color: "#FFFF" }}>
+                      {timeElapsed.days}
+                    </span>{" "}
+                    dias{" "}
+                  </div>
+                  <div style={{ fontSize: "20px", marginTop: "10px" }}>
+                    <span style={{ fontWeight: "bold", color: "#FFFF" }}>
+                      {timeElapsed.hours}
+                    </span>{" "}
+                    horas{" "}
+                    <span style={{ fontWeight: "bold", color: "#FFFF" }}>
+                      {timeElapsed.minutes}
+                    </span>{" "}
+                    minutos e{" "}
+                    <span style={{ fontWeight: "bold", color: "#FFFF" }}>
+                      {timeElapsed.seconds}
+                    </span>{" "}
+                    segundos
+                  </div>
+                </div>
+              </TimeCounter>
+            </CDSection>
+            <Linha />
+            <TSection>
+              <h1 style={{ fontSize: "25px", marginTop: "20px" }}>
+                Oi princesa ❤️
+              </h1>
+              <Lparagraph>
+                Só passando pra te dizer que eu te amo muito, e agradeço todos
+                os dias pelo nosso encontro
+              </Lparagraph>
+              <Linha />
+              <Lparagraph>
+                Espero passar todos os dias da minha vida ao seu lado
+              </Lparagraph>
+            </TSection>
+          </Container>
+        </FadeContainer>
+      )}
+    </>
   );
 }
 

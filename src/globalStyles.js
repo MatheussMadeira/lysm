@@ -8,7 +8,7 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #121212
+    background-image: #121212;
   }
 
   body {

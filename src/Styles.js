@@ -81,3 +81,26 @@ export const NavigationButton = styled.button`
     color: #0074ba;
   }
 `;
+export const Buttonpage = styled.button`
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  &:active {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+`;
+export const FadeContainer = styled.div`
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transform: ${(props) =>
+    props.isVisible ? "translateY(0)" : "translateY(20px)"};
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  width: 100%;
+`;
