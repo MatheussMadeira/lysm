@@ -9,6 +9,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 2vh;
 `;
 export const TitlePrimary = styled.h1`
   color: #b22222;
@@ -32,14 +33,26 @@ export const Image = styled.img`
   transition: transform 0.5s ease-in-out;
   transform: ${({ currentIndex }) => `translateX(-${currentIndex * 100}%)`};
 `;
-export const TSection = styled.section``;
+export const TSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 export const Fparagraph = styled.p``;
-export const Lparagraph = styled.p``;
+export const Lparagraph = styled.p`
+  font-size: 18px;
+  color: #b5b4b4;
+  padding: 10px 20px;
+  text-align: center;
+  margin-bottom: 10px;
+`;
 export const CDSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 20px;
 `;
 export const TimeCounter = styled.p`
   font-size: 15px;

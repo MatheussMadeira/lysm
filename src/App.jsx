@@ -104,6 +104,15 @@ function App() {
         <TitlePrimary></TitlePrimary>
       </Header>
       <CSection>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px",
+          }}
+        >
+          <span style={{ fontSize: "25px" }}>💙</span>
+        </div>
         <Carrousel>
           <div
             style={{
@@ -140,6 +149,7 @@ function App() {
             fontSize: "25px",
             marginBottom: "10px",
             marginLeft: "10px",
+            marginTop: "0px",
           }}
         >
           Juntos há:
@@ -180,11 +190,17 @@ function App() {
         </TimeCounter>
       </CDSection>
       <Linha />
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-      >
-        <span style={{ fontSize: "25px" }}>💙</span>
-      </div>
+      <TSection>
+        <h1 style={{ fontSize: "25px", marginTop: "20px" }}>Oi princesa ❤️</h1>
+        <Lparagraph>
+          Só passando pra te dizer que eu te amo muito, e agradeço todos os dias
+          pelo nosso encontro
+        </Lparagraph>
+        <Linha />
+        <Lparagraph>
+          Espero passar todos os dias da minha vida ao seu lado
+        </Lparagraph>
+      </TSection>
     </Container>
   );
 }
